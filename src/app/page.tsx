@@ -2,8 +2,10 @@
 
 import React from 'react';
 import { HeroSection } from './components/landing/HeroSection';
-import { FeatureHighlight } from './components/landing/FeatureHighlight';
-import { BentoGrid } from './components/landing/BentoGrid';
+import { CoreFeatures } from './components/landing/CoreFeatures';
+import { ProblemSolution } from './components/landing/ProblemSolution';
+import { AiShowcase } from './components/landing/AiShowcase';
+import { FloatingMenuHighlight } from './components/landing/FloatingMenuHighlight';
 import { Footer } from './components/landing/Footer';
 
 export default function Home() {
@@ -13,10 +15,12 @@ export default function Home() {
   };
 
   return (
-    <main className="bg-[#050508] min-h-screen text-white selection:bg-cyan-500/30 font-sans">
+    <main className="bg-[#050508] min-h-screen text-white selection:bg-purple-500/30 font-sans">
       <HeroSection onLogin={handleLogin} />
-      <FeatureHighlight />
-      <BentoGrid />
+      <ProblemSolution />
+      <CoreFeatures />
+      <AiShowcase />
+      <FloatingMenuHighlight />
       <Footer />
     </main>
   );
