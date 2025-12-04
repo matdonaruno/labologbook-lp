@@ -18,8 +18,12 @@ import {
   FlaskConical,
   Smartphone,
   Shield,
-  ClipboardCheck
+  ClipboardCheck,
+  TrendingUp,
+  Database,
+  Users
 } from 'lucide-react';
+
 
 // Section 1: Hero with Video (Cinematic Animation)
 const HeroVideo = () => {
@@ -32,21 +36,31 @@ const HeroVideo = () => {
       <div className="absolute inset-0 bg-[url('/grid.svg')] bg-center opacity-40 [mask-image:linear-gradient(180deg,white,rgba(255,255,255,0))]"
         style={{ transform: 'perspective(500px) rotateX(60deg) translateY(-100px) scale(2)' }} />
 
-      {/* Fullscreen Cinematic Animation Background */}
+      {/* Fullscreen Cinematic Animation Background (Low Opacity Elements) */}
       <div className="absolute inset-0 flex items-center justify-center">
-        {/* Rotating Data Rings - Layer 1 (Outer) */}
+        {/* Holographic Globe Wireframe */}
+        <motion.div
+          animate={{ rotate: 360 }}
+          transition={{ duration: 100, repeat: Infinity, ease: "linear" }}
+          className="w-[600px] h-[600px] md:w-[900px] md:h-[900px] rounded-full absolute border border-purple-500/20 opacity-30"
+          style={{ transformStyle: "preserve-3d", transform: "rotateX(60deg)" }}
+        >
+          {[...Array(5)].map((_, i) => (
+            <div key={i} className="absolute inset-0 rounded-full border border-purple-500/10" style={{ transform: `rotateX(${i * 30}deg)` }} />
+          ))}
+        </motion.div>
+
+        {/* Rotating Data Rings */}
         <motion.div
           animate={{ rotate: 360 }}
           transition={{ duration: 60, repeat: Infinity, ease: "linear" }}
           className="w-[800px] h-[800px] md:w-[1200px] md:h-[1200px] border border-purple-500/30 rounded-full absolute border-dashed shadow-[0_0_30px_rgba(168,85,247,0.1)]"
         />
-        {/* Layer 2 */}
         <motion.div
           animate={{ rotate: -360 }}
           transition={{ duration: 40, repeat: Infinity, ease: "linear" }}
           className="w-[600px] h-[600px] md:w-[900px] md:h-[900px] border border-cyan-500/30 rounded-full absolute border-dotted opacity-70 shadow-[0_0_30px_rgba(6,182,212,0.1)]"
         />
-        {/* Layer 3 (Inner Fast) */}
         <motion.div
           animate={{ rotate: 360 }}
           transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
@@ -54,7 +68,7 @@ const HeroVideo = () => {
         />
 
         {/* Particle System */}
-        {[...Array(30)].map((_, i) => (
+        {[...Array(40)].map((_, i) => (
           <motion.div
             key={i}
             className="absolute w-1 h-1 bg-white rounded-full box-shadow-[0_0_5px_white]"
@@ -75,50 +89,6 @@ const HeroVideo = () => {
           />
         ))}
 
-        {/* Floating UI Cards (Background Elements) */}
-        <motion.div
-          initial={{ x: -100, opacity: 0 }}
-          animate={{ x: 0, opacity: 1 }}
-          transition={{ delay: 1, duration: 0.8 }}
-          className="absolute left-[5%] top-[20%] bg-gray-900/60 backdrop-blur-md border border-white/10 p-4 rounded-lg w-48 hidden md:block shadow-lg shadow-cyan-500/10"
-        >
-          <div className="flex items-center gap-2 mb-2">
-            <Thermometer size={16} className="text-cyan-400" />
-            <span className="text-xs text-white">Temperature</span>
-          </div>
-          <div className="h-1 bg-gray-700 rounded-full overflow-hidden">
-            <motion.div
-              animate={{ width: ["0%", "70%"] }}
-              transition={{ duration: 1.5, delay: 1.5 }}
-              className="h-full bg-cyan-400"
-            />
-          </div>
-          <div className="mt-2 text-right text-cyan-400 font-mono text-xs">5.0°C OK</div>
-        </motion.div>
-
-        <motion.div
-          initial={{ x: 100, opacity: 0 }}
-          animate={{ x: 0, opacity: 1 }}
-          transition={{ delay: 1.5, duration: 0.8 }}
-          className="absolute right-[5%] bottom-[20%] bg-gray-900/60 backdrop-blur-md border border-white/10 p-4 rounded-lg w-48 hidden md:block shadow-lg shadow-purple-500/10"
-        >
-          <div className="flex items-center gap-2 mb-2">
-            <BarChart3 size={16} className="text-purple-400" />
-            <span className="text-xs text-white">Analysis</span>
-          </div>
-          <div className="flex gap-1 h-8 items-end">
-            {[40, 70, 50, 90, 60].map((h, i) => (
-              <motion.div
-                key={i}
-                initial={{ height: 0 }}
-                animate={{ height: `${h}%` }}
-                transition={{ delay: 2 + i * 0.1, duration: 0.5 }}
-                className="flex-1 bg-purple-500/50 rounded-t-sm"
-              />
-            ))}
-          </div>
-        </motion.div>
-
         {/* Scanning Beam */}
         <motion.div
           animate={{ rotate: 360 }}
@@ -126,6 +96,140 @@ const HeroVideo = () => {
           className="absolute w-[1000px] h-[1000px] bg-gradient-to-t from-purple-500/20 to-transparent rounded-full pointer-events-none"
           style={{ maskImage: 'linear-gradient(to right, transparent 50%, black 50%)' }}
         />
+      </div>
+
+      {/* Floating UI Cards (High Visibility Layer - Front Most) */}
+      <div className="absolute inset-0 pointer-events-none z-20">
+        {/* 1. Temperature (Top Left) */}
+        <motion.div
+          initial={{ x: -100, opacity: 0 }}
+          animate={{ x: 0, opacity: 1 }}
+          transition={{ delay: 1, duration: 0.8 }}
+          className="absolute left-[5%] top-[15%] bg-gray-900/95 border border-cyan-400/30 p-4 rounded-lg w-56 hidden md:block shadow-[0_0_30px_rgba(6,182,212,0.4)]"
+        >
+          <div className="flex items-center gap-2 mb-3">
+            <Thermometer size={16} className="text-cyan-400" />
+            <span className="text-xs text-white font-bold">Temperature Monitor</span>
+          </div>
+          <div className="flex items-end gap-2 h-12 mb-2">
+            {/* Fake Line Chart */}
+            <svg className="w-full h-full overflow-visible" preserveAspectRatio="none">
+              <motion.path
+                d="M0,40 Q10,35 20,38 T40,36 T60,40 T80,35 T100,38 T120,36 T140,40"
+                fill="none"
+                stroke="#22d3ee"
+                strokeWidth="2"
+                initial={{ pathLength: 0 }}
+                animate={{ pathLength: 1 }}
+                transition={{ duration: 2, repeat: Infinity, repeatType: "reverse", ease: "easeInOut" }}
+              />
+            </svg>
+          </div>
+          <div className="flex justify-between items-center border-t border-white/10 pt-2">
+            <span className="text-[10px] text-gray-400">Refrig A</span>
+            <span className="text-cyan-400 font-mono text-sm font-bold">5.0°C</span>
+          </div>
+        </motion.div>
+
+        {/* 2. Maintenance (Top Right) */}
+        <motion.div
+          initial={{ x: 100, opacity: 0 }}
+          animate={{ x: 0, opacity: 1 }}
+          transition={{ delay: 1.2, duration: 0.8 }}
+          className="absolute right-[5%] top-[15%] bg-gray-900/95 border border-orange-400/30 p-4 rounded-lg w-56 hidden md:block shadow-[0_0_30px_rgba(249,115,22,0.4)]"
+        >
+          <div className="flex items-center gap-2 mb-3">
+            <Wrench size={16} className="text-orange-400" />
+            <span className="text-xs text-white font-bold">Maintenance</span>
+          </div>
+          <div className="space-y-2">
+            {['Probe Clean', 'Reagent Check', 'Calibration'].map((item, i) => (
+              <div key={i} className="flex items-center gap-2">
+                <motion.div
+                  initial={{ scale: 0 }}
+                  animate={{ scale: 1 }}
+                  transition={{ delay: 2 + i * 0.5 }}
+                  className="w-3 h-3 rounded-full bg-orange-500 flex items-center justify-center"
+                >
+                  <CheckCircle2 size={8} className="text-black" />
+                </motion.div>
+                <span className="text-[10px] text-gray-300">{item}</span>
+              </div>
+            ))}
+          </div>
+        </motion.div>
+
+        {/* 3. Voice Input (Bottom Left) */}
+        <motion.div
+          initial={{ x: -100, opacity: 0 }}
+          animate={{ x: 0, opacity: 1 }}
+          transition={{ delay: 1.4, duration: 0.8 }}
+          className="absolute left-[5%] bottom-[15%] bg-gray-900/95 border border-purple-400/30 p-4 rounded-lg w-56 hidden md:block shadow-[0_0_30px_rgba(168,85,247,0.4)]"
+        >
+          <div className="flex items-center gap-2 mb-3">
+            <div className="w-2 h-2 rounded-full bg-red-500 animate-pulse" />
+            <span className="text-xs text-white font-bold">Voice Input (STT)</span>
+          </div>
+          <div className="flex items-center justify-center gap-1 h-8">
+            {[...Array(8)].map((_, i) => (
+              <motion.div
+                key={i}
+                className="w-1 bg-purple-400 rounded-full"
+                animate={{ height: [10, 25, 10] }}
+                transition={{ duration: 0.5, repeat: Infinity, delay: i * 0.1 }}
+              />
+            ))}
+          </div>
+          <div className="mt-2 text-[10px] text-gray-400 text-center">
+            "検体ID 12345, 溶血あり"
+          </div>
+        </motion.div>
+
+        {/* 4. Analysis / QC (Bottom Right) */}
+        <motion.div
+          initial={{ x: 100, opacity: 0 }}
+          animate={{ x: 0, opacity: 1 }}
+          transition={{ delay: 1.6, duration: 0.8 }}
+          className="absolute right-[5%] bottom-[15%] bg-gray-900/95 border border-green-400/30 p-4 rounded-lg w-56 hidden md:block shadow-[0_0_30px_rgba(34,197,94,0.4)]"
+        >
+          <div className="flex items-center gap-2 mb-3">
+            <BarChart3 size={16} className="text-green-400" />
+            <span className="text-xs text-white font-bold">Quality Control</span>
+          </div>
+          <div className="relative h-16 w-full border-b border-l border-white/20">
+            {/* Mean Line */}
+            <div className="absolute top-1/2 left-0 right-0 h-px bg-green-500/30 border-t border-dashed border-green-500/50" />
+
+            {/* Levy-Jennings Chart Path */}
+            <svg className="absolute inset-0 w-full h-full overflow-visible">
+              <motion.path
+                d="M0,32 L20,20 L40,40 L60,28 L80,32 L100,15 L120,32 L140,35 L160,30"
+                fill="none"
+                stroke="#4ade80"
+                strokeWidth="2"
+                initial={{ pathLength: 0 }}
+                animate={{ pathLength: 1 }}
+                transition={{ duration: 3, ease: "easeInOut" }}
+              />
+              {/* Dots */}
+              {[
+                [20, 20], [40, 40], [60, 28], [80, 32], [100, 15], [120, 32], [140, 35], [160, 30]
+              ].map((pos, i) => (
+                <motion.circle
+                  key={i}
+                  cx={pos[0]}
+                  cy={pos[1]}
+                  r="2"
+                  fill="#fff"
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ delay: i * 0.3 }}
+                />
+              ))}
+            </svg>
+          </div>
+          <div className="mt-2 text-right text-green-400 font-mono text-xs">Westgard: OK</div>
+        </motion.div>
       </div>
 
       {/* Main Content Overlay */}
