@@ -50,7 +50,7 @@ export const HeroSection: React.FC = () => {
             priority={true}
             quality={85}
             sizes="100vw"
-            className={`object-cover transition-opacity duration-500 ${
+            className={`object-cover object-center portrait:object-top transition-opacity duration-500 ${
               index === heroIndex && isLoaded ? 'opacity-100' : 'opacity-0'
             }`}
             onLoad={() => {

@@ -233,7 +233,7 @@ const HeroVideo = () => {
       </div>
 
       {/* Main Content Overlay */}
-      <div className="relative z-10 text-center px-6 w-full max-w-6xl flex flex-col items-center">
+      <div className="relative z-30 text-center px-6 w-full max-w-6xl flex flex-col items-center">
         <motion.div
           initial={{ opacity: 0, scale: 0.9 }}
           animate={{ opacity: 1, scale: 1 }}
@@ -277,7 +277,7 @@ const HeroVideo = () => {
 
       {/* Scroll indicator */}
       <motion.div
-        className="absolute bottom-10 left-1/2 -translate-x-1/2 text-white/50 text-xs tracking-widest uppercase flex flex-col items-center gap-4"
+        className="absolute bottom-10 left-1/2 -translate-x-1/2 text-white/50 text-xs tracking-widest uppercase flex flex-col items-center gap-4 z-30"
         animate={{ y: [0, 10, 0] }}
         transition={{ duration: 2, repeat: Infinity }}
       >
