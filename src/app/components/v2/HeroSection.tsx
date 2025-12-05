@@ -6,16 +6,68 @@ import { motion, useScroll, useTransform } from 'framer-motion';
 import { ArrowRight, Play, Mail, Smartphone } from 'lucide-react';
 
 // Hero images - randomly selected on each page load (optimized JPG)
-// position: iPad縦画面で見せたい位置を指定
+// position: デバイスごとに画像の表示位置を%で指定
+// ブレークポイント: iPhone 13 mini (~375px), iPad mini (~768px), iPad Pro (~1024px+)
 const HERO_IMAGES = [
-  { src: '/images/left_hiro2.jpg', position: 'left' },   // 左側を見せる
-  { src: '/images/right_hiro2.jpg', position: 'right' }, // 右側を見せる
+  {
+    src: '/images/left_hiro2.jpg',
+    // 左側の被写体を見せたい
+    position: {
+      iphone: '25% center',    // iPhone 13 mini: 左寄り
+      ipadMini: '35% center',  // iPad mini縦: やや左寄り
+      ipadPro: '45% center',   // iPad Pro縦: 少し左寄り
+      desktop: 'center',       // PC: 中央
+    }
+  },
+  {
+    src: '/images/right_hiro2.jpg',
+    // 右側の被写体を見せたい
+    position: {
+      iphone: '75% center',    // iPhone 13 mini: 右寄り
+      ipadMini: '65% center',  // iPad mini縦: やや右寄り
+      ipadPro: '55% center',   // iPad Pro縦: 少し右寄り
+      desktop: 'center',       // PC: 中央
+    }
+  },
 ];
+
+// デバイスタイプを判定するカスタムフック
+// iPhone 13 mini: 375px, iPad mini: 768px, iPad Pro: 1024px
+type DeviceType = 'iphone' | 'ipadMini' | 'ipadPro' | 'desktop';
+
+const useDeviceType = (): DeviceType => {
+  const [deviceType, setDeviceType] = useState<DeviceType>('desktop');
+
+  useEffect(() => {
+    const checkDevice = () => {
+      const width = window.innerWidth;
+      if (width <= 430) {
+        // iPhone 13 mini (375px) ~ iPhone 14 Pro Max (430px)
+        setDeviceType('iphone');
+      } else if (width <= 834) {
+        // iPad mini (768px) ~ iPad Air (820px)
+        setDeviceType('ipadMini');
+      } else if (width <= 1194) {
+        // iPad Pro 11" (834px landscape) ~ iPad Pro 12.9" (1024px portrait)
+        setDeviceType('ipadPro');
+      } else {
+        setDeviceType('desktop');
+      }
+    };
+
+    checkDevice();
+    window.addEventListener('resize', checkDevice);
+    return () => window.removeEventListener('resize', checkDevice);
+  }, []);
+
+  return deviceType;
+};
 
 export const HeroSection: React.FC = () => {
   const containerRef = useRef(null);
   const [heroIndex, setHeroIndex] = useState(0);
   const [isLoaded, setIsLoaded] = useState(false);
+  const deviceType = useDeviceType();
 
   // Randomly select hero image on mount (client-side only)
   useEffect(() => {
@@ -55,8 +107,7 @@ export const HeroSection: React.FC = () => {
               index === heroIndex && isLoaded ? 'opacity-100' : 'opacity-0'
             }`}
             style={{
-              objectPosition: image.position === 'right' ? 'right center' :
-                             image.position === 'left' ? 'left center' : 'center'
+              objectPosition: image.position[deviceType]
             }}
             onLoad={() => {
               if (index === heroIndex) setIsLoaded(true);
