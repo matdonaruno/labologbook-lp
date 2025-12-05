@@ -6,9 +6,10 @@ import { motion, useScroll, useTransform } from 'framer-motion';
 import { ArrowRight, Play, Mail, Smartphone } from 'lucide-react';
 
 // Hero images - randomly selected on each page load (optimized JPG)
+// position: iPad縦画面で見せたい位置を指定
 const HERO_IMAGES = [
-  '/images/left_hiro2.jpg',
-  '/images/right_hiro2.jpg',
+  { src: '/images/left_hiro2.jpg', position: 'left' },   // 左側を見せる
+  { src: '/images/right_hiro2.jpg', position: 'right' }, // 右側を見せる
 ];
 
 export const HeroSection: React.FC = () => {
@@ -41,18 +42,22 @@ export const HeroSection: React.FC = () => {
       >
         {/* Hero Image Background - Optimized with Next.js Image */}
         {/* Preload both images, show selected one */}
-        {HERO_IMAGES.map((src, index) => (
+        {HERO_IMAGES.map((image, index) => (
           <Image
-            key={src}
-            src={src}
+            key={image.src}
+            src={image.src}
             alt="Hero Background"
             fill
             priority={true}
             quality={85}
             sizes="100vw"
-            className={`object-cover object-center portrait:object-top transition-opacity duration-500 ${
+            className={`object-cover transition-opacity duration-500 ${
               index === heroIndex && isLoaded ? 'opacity-100' : 'opacity-0'
             }`}
+            style={{
+              objectPosition: image.position === 'right' ? 'right center' :
+                             image.position === 'left' ? 'left center' : 'center'
+            }}
             onLoad={() => {
               if (index === heroIndex) setIsLoaded(true);
             }}
