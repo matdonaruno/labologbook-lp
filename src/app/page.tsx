@@ -2,6 +2,7 @@ import React from 'react';
 import { HeroSection } from './components/v2/HeroSection';
 import { AiShowcase } from './components/v2/AiShowcase';
 import { BentoGrid } from './components/landing/BentoGrid';
+import { LaboVoiceSection } from './components/landing/LaboVoiceSection';
 import { Footer } from './components/landing/Footer';
 
 export default function Home() {
@@ -10,6 +11,7 @@ export default function Home() {
       <HeroSection />
       <AiShowcase />
       <BentoGrid />
+      <LaboVoiceSection />
       <Footer />
     </main>
   );

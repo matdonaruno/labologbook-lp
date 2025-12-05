@@ -6,26 +6,26 @@ import { QrCode, Box, Thermometer, LockKeyhole, ArrowUpRight } from 'lucide-reac
 
 export const BentoGrid: React.FC = () => {
     return (
-        <section className="py-20 bg-[#050508] text-white relative">
-             <div className="container mx-auto px-6">
-                <div className="text-center mb-20">
-                    <motion.h2 
+        <section className="py-12 md:py-20 bg-[#050508] text-white relative">
+             <div className="container mx-auto px-4 md:px-6">
+                <div className="text-center mb-10 md:mb-20">
+                    <motion.h2
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
-                        className="text-3xl md:text-5xl font-bold mb-6"
+                        className="text-2xl sm:text-3xl md:text-5xl font-bold mb-4 md:mb-6"
                     >
                         All-in-One Platform
                     </motion.h2>
-                    <p className="text-gray-400 text-lg">必要な機能は、すべてここに。</p>
+                    <p className="text-gray-400 text-base md:text-lg">必要な機能は、すべてここに。</p>
                 </div>
 
-                <div className="grid grid-cols-1 md:grid-cols-4 grid-rows-4 md:grid-rows-2 gap-6 h-auto md:h-[600px]">
-                    
+                <div className="grid grid-cols-1 md:grid-cols-4 grid-rows-4 md:grid-rows-2 gap-4 md:gap-6 h-auto md:h-[600px]">
+
                     {/* 1. Reagent Control (Large) */}
-                    <motion.div 
+                    <motion.div
                         whileHover={{ scale: 0.98 }}
-                        className="md:col-span-2 md:row-span-2 bg-[#0a0a0f] border border-white/10 rounded-3xl p-8 relative overflow-hidden group cursor-pointer"
+                        className="md:col-span-2 md:row-span-2 bg-[#0a0a0f] border border-white/10 rounded-2xl md:rounded-3xl p-6 md:p-8 relative overflow-hidden group cursor-pointer"
                     >
                         <div className="absolute top-0 right-0 w-full h-full bg-gradient-to-br from-cyan-900/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                         
@@ -60,9 +60,9 @@ export const BentoGrid: React.FC = () => {
                     </motion.div>
 
                     {/* 2. Equipment (Tall) */}
-                    <motion.div 
+                    <motion.div
                         whileHover={{ scale: 0.98 }}
-                        className="md:col-span-1 md:row-span-2 bg-[#0a0a0f] border border-white/10 rounded-3xl p-8 relative overflow-hidden group cursor-pointer"
+                        className="md:col-span-1 md:row-span-2 bg-[#0a0a0f] border border-white/10 rounded-2xl md:rounded-3xl p-6 md:p-8 relative overflow-hidden group cursor-pointer"
                     >
                          <div className="absolute -bottom-20 -right-20 w-60 h-60 bg-purple-500/10 blur-[60px] rounded-full group-hover:bg-purple-500/20 transition-colors" />
                          
@@ -84,9 +84,9 @@ export const BentoGrid: React.FC = () => {
                     </motion.div>
 
                     {/* 3. Temp Check (Small) */}
-                    <motion.div 
+                    <motion.div
                         whileHover={{ scale: 0.98 }}
-                        className="bg-[#0a0a0f] border border-white/10 rounded-3xl p-6 flex flex-col justify-between group cursor-pointer overflow-hidden"
+                        className="bg-[#0a0a0f] border border-white/10 rounded-2xl md:rounded-3xl p-5 md:p-6 flex flex-col justify-between group cursor-pointer overflow-hidden min-h-[140px]"
                     >
                         <div className="absolute inset-0 bg-red-500/5 opacity-0 group-hover:opacity-100 transition-opacity" />
                         <div className="flex justify-between items-start relative z-10">
@@ -102,9 +102,9 @@ export const BentoGrid: React.FC = () => {
                     </motion.div>
 
                     {/* 4. Security (Small) */}
-                    <motion.div 
+                    <motion.div
                          whileHover={{ scale: 0.98 }}
-                         className="bg-[#0a0a0f] border border-white/10 rounded-3xl p-6 flex flex-col justify-between group cursor-pointer overflow-hidden"
+                         className="bg-[#0a0a0f] border border-white/10 rounded-2xl md:rounded-3xl p-5 md:p-6 flex flex-col justify-between group cursor-pointer overflow-hidden min-h-[140px]"
                     >
                         <div className="absolute inset-0 bg-green-500/5 opacity-0 group-hover:opacity-100 transition-opacity" />
                         <div className="flex justify-between items-start relative z-10">

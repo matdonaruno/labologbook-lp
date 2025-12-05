@@ -30,6 +30,12 @@ export default function RootLayout({
           as="image"
           type="image/jpeg"
         />
+        <link
+          rel="preload"
+          href="/images/labovoice_app.jpg"
+          as="image"
+          type="image/jpeg"
+        />
       </head>
       <body className={inter.className}>{children}</body>
     </html>
