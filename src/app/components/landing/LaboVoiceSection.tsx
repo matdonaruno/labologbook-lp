@@ -3,13 +3,13 @@
 import React from 'react';
 import Image from 'next/image';
 import { motion } from 'framer-motion';
-import { Smartphone, Mic, FileText, Clock } from 'lucide-react';
+import { Smartphone, Mic, Search, Heart } from 'lucide-react';
 
 export const LaboVoiceSection: React.FC = () => {
     const features = [
-        { icon: Mic, text: '音声入力で記録' },
-        { icon: FileText, text: '自動文字起こし' },
-        { icon: Clock, text: '作業時間を短縮' },
+        { icon: Mic, text: '声で記録' },
+        { icon: Search, text: '声でSOP検索' },
+        { icon: Heart, text: 'いつもあなたのそばに' },
     ];
 
     return (
@@ -65,9 +65,9 @@ export const LaboVoiceSection: React.FC = () => {
                         </h2>
 
                         <p className="text-gray-300 text-base md:text-lg leading-relaxed mb-6 md:mb-8">
-                            臨床検査技師のための音声入力アプリ。<br className="hidden sm:block" />
-                            検査中でも手を止めずに記録ができます。<br className="hidden sm:block" />
-                            AIが音声を自動で文字起こしし、業務効率を大幅に向上させます。
+                            臨床検査技師の音声AIパートナー。<br />
+                            記録も質問も、声だけで完結。<br />
+                            あなたの時間を、もっと大切に。
                         </p>
 
                         {/* Feature pills */}
@@ -91,7 +91,7 @@ export const LaboVoiceSection: React.FC = () => {
                             className="inline-flex items-center gap-3 px-6 sm:px-8 py-3 sm:py-4 bg-gradient-to-r from-purple-600 to-cyan-600 text-white font-bold rounded-full hover:scale-105 transition-all duration-300 shadow-lg shadow-purple-500/30"
                         >
                             <Smartphone size={20} />
-                            <span>App Storeで見る</span>
+                            <span>LABO VOICEへ</span>
                         </a>
                     </motion.div>
                 </div>

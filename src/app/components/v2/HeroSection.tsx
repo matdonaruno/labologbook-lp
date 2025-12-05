@@ -119,7 +119,7 @@ export const HeroSection: React.FC = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 1 }}
-            className="flex flex-col sm:flex-row flex-wrap justify-center items-center gap-3 sm:gap-4 md:gap-6 w-full max-w-3xl"
+            className="flex flex-col sm:flex-row flex-wrap justify-center items-center gap-3 sm:gap-4 md:gap-6 w-full max-w-3xl mb-8 lg:mb-0"
         >
             {/* Primary CTA */}
             <a
@@ -175,15 +175,15 @@ export const HeroSection: React.FC = () => {
 
       </div>
 
-      {/* Scroll Indicator - Hidden on very small screens */}
+      {/* Scroll Indicator - Only show on large screens to avoid overlap */}
       <motion.div
-        className="absolute bottom-6 md:bottom-10 left-1/2 -translate-x-1/2 text-white/50 text-[10px] md:text-xs tracking-widest uppercase flex flex-col items-center gap-2 md:gap-4 z-30 hidden sm:flex"
+        className="absolute bottom-10 left-1/2 -translate-x-1/2 text-white/50 text-xs tracking-widest uppercase flex-col items-center gap-4 z-30 hidden lg:flex"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 1.5 }}
       >
         <span>Scroll</span>
-        <div className="w-[1px] h-8 md:h-16 bg-gradient-to-b from-white to-transparent" />
+        <div className="w-[1px] h-16 bg-gradient-to-b from-white to-transparent" />
       </motion.div>
 
     </section>
