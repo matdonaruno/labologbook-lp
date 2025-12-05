@@ -3,11 +3,7 @@
 import React, { useRef, useState, useEffect } from 'react';
 import Image from 'next/image';
 import { motion, useScroll, useTransform } from 'framer-motion';
-import { ArrowRight, Play, Mail } from 'lucide-react';
-
-interface HeroSectionProps {
-  onLogin: () => void;
-}
+import { ArrowRight, Play, Mail, Smartphone } from 'lucide-react';
 
 // Hero images - randomly selected on each page load (optimized JPG)
 const HERO_IMAGES = [
@@ -15,7 +11,7 @@ const HERO_IMAGES = [
   '/images/right_hiro2.jpg',
 ];
 
-export const HeroSection: React.FC<HeroSectionProps> = ({ onLogin }) => {
+export const HeroSection: React.FC = () => {
   const containerRef = useRef(null);
   const [heroIndex, setHeroIndex] = useState(0);
   const [isLoaded, setIsLoaded] = useState(false);
@@ -125,8 +121,10 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onLogin }) => {
             transition={{ delay: 1 }}
             className="flex gap-6"
         >
-            <button
-                onClick={onLogin}
+            <a
+                href="https://next-crm-coral.vercel.app/"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="group relative px-8 py-4 bg-white text-black font-bold rounded-full overflow-hidden flex items-center gap-3 hover:scale-105 transition-all duration-300"
                 style={{ boxShadow: 'none' }}
                 onMouseEnter={(e) => e.currentTarget.style.boxShadow = '0 0 40px rgba(147,51,234,0.9), 0 0 80px rgba(147,51,234,0.6), 0 0 120px rgba(147,51,234,0.3)'}
@@ -134,7 +132,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onLogin }) => {
             >
                 <span className="relative z-10">Start Demo</span>
                 <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
-            </button>
+            </a>
 
             <a
                 href="/concept"
@@ -144,6 +142,18 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onLogin }) => {
                     <Play size={14} fill="currentColor" />
                 </div>
                 <span className="font-medium tracking-wide">Watch Concept</span>
+            </a>
+
+            <a
+                href="https://labovoice.app/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-3 px-8 py-4 text-white hover:text-purple-400 transition-colors"
+            >
+                <div className="w-10 h-10 rounded-full border border-white/30 flex items-center justify-center">
+                    <Smartphone size={14} />
+                </div>
+                <span className="font-medium tracking-wide">LABO VOICE</span>
             </a>
 
             <a
