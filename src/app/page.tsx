@@ -1,26 +1,21 @@
 'use client';
 
 import React from 'react';
-import { HeroSection } from './components/landing/HeroSection';
-import { CoreFeatures } from './components/landing/CoreFeatures';
-import { ProblemSolution } from './components/landing/ProblemSolution';
-import { AiShowcase } from './components/landing/AiShowcase';
-import { FloatingMenuHighlight } from './components/landing/FloatingMenuHighlight';
+import { HeroSection } from './components/v2/HeroSection';
+import { AiShowcase } from './components/v2/AiShowcase';
+import { BentoGrid } from './components/landing/BentoGrid';
 import { Footer } from './components/landing/Footer';
 
 export default function Home() {
   const handleLogin = () => {
-    // Redirect to the App URL (Vercel)
     window.location.href = 'https://app.labologbook.app/login';
   };
 
   return (
-    <main className="bg-[#050508] min-h-screen text-white selection:bg-purple-500/30 font-sans">
+    <main className="bg-[#050508] min-h-screen text-white selection:bg-cyan-500/30 font-sans">
       <HeroSection onLogin={handleLogin} />
-      <ProblemSolution />
-      <CoreFeatures />
       <AiShowcase />
-      <FloatingMenuHighlight />
+      <BentoGrid />
       <Footer />
     </main>
   );
