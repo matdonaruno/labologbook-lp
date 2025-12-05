@@ -13,20 +13,20 @@ const HERO_IMAGES = [
     src: '/images/left_hiro2.jpg',
     // 左側の被写体を見せたい
     position: {
-      iphone: '25% center',    // iPhone 13 mini: 左寄り
-      ipadMini: '35% center',  // iPad mini縦: やや左寄り
-      ipadPro: '45% center',   // iPad Pro縦: 少し左寄り
-      desktop: 'center',       // PC: 中央
+      iphone: '35% center',    // iPhone 13 mini
+      ipadMini: '35% center',  // iPad mini
+      ipadPro: '42% center',   // iPad Pro
+      desktop: 'center',       // PC
     }
   },
   {
     src: '/images/right_hiro2.jpg',
     // 右側の被写体を見せたい
     position: {
-      iphone: '75% center',    // iPhone 13 mini: 右寄り
-      ipadMini: '65% center',  // iPad mini縦: やや右寄り
-      ipadPro: '55% center',   // iPad Pro縦: 少し右寄り
-      desktop: 'center',       // PC: 中央
+      iphone: '70% center',    // iPhone 13 mini
+      ipadMini: '65% center',  // iPad mini
+      ipadPro: '70% center',   // iPad Pro
+      desktop: 'center',       // PC
     }
   },
 ];
