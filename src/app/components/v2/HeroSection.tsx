@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useRef, useState, useEffect } from 'react';
+import Image from 'next/image';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { ArrowRight, Play, Mail } from 'lucide-react';
 
@@ -8,20 +9,21 @@ interface HeroSectionProps {
   onLogin: () => void;
 }
 
-// Hero images - randomly selected on each page load
+// Hero images - randomly selected on each page load (optimized JPG)
 const HERO_IMAGES = [
-  '/images/left_hiro2.png',
-  '/images/right_hiro2.png',
+  '/images/left_hiro2.jpg',
+  '/images/right_hiro2.jpg',
 ];
 
 export const HeroSection: React.FC<HeroSectionProps> = ({ onLogin }) => {
   const containerRef = useRef(null);
-  const [heroImage, setHeroImage] = useState<string | null>(null);
+  const [heroIndex, setHeroIndex] = useState(0);
+  const [isLoaded, setIsLoaded] = useState(false);
 
   // Randomly select hero image on mount (client-side only)
   useEffect(() => {
     const randomIndex = Math.floor(Math.random() * HERO_IMAGES.length);
-    setHeroImage(HERO_IMAGES[randomIndex]);
+    setHeroIndex(randomIndex);
   }, []);
 
   const { scrollYProgress } = useScroll({
@@ -41,18 +43,25 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onLogin }) => {
         style={{ y, opacity }}
         className="absolute inset-0 z-0"
       >
-        {/* Hero Image Background - Randomly selected */}
-        {heroImage && (
-          <img
-            src={heroImage}
+        {/* Hero Image Background - Optimized with Next.js Image */}
+        {/* Preload both images, show selected one */}
+        {HERO_IMAGES.map((src, index) => (
+          <Image
+            key={src}
+            src={src}
             alt="Hero Background"
-            className="absolute inset-0 w-full h-full object-cover"
-            onError={(e) => {
-              // Hide image on error, show fallback
-              (e.target as HTMLImageElement).style.display = 'none';
+            fill
+            priority={true}
+            quality={85}
+            sizes="100vw"
+            className={`object-cover transition-opacity duration-500 ${
+              index === heroIndex && isLoaded ? 'opacity-100' : 'opacity-0'
+            }`}
+            onLoad={() => {
+              if (index === heroIndex) setIsLoaded(true);
             }}
           />
-        )}
+        ))}
 
         {/* Dimmer overlay for better text readability */}
         <div className="absolute inset-0 bg-black/40 z-10" />
