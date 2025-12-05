@@ -177,7 +177,7 @@ export const HeroSection: React.FC = () => {
 
       {/* Scroll Indicator - Only show on large screens to avoid overlap */}
       <motion.div
-        className="absolute bottom-10 left-1/2 -translate-x-1/2 text-white/50 text-xs tracking-widest uppercase flex-col items-center gap-4 z-30 hidden lg:flex"
+        className="absolute bottom-10 left-1/2 -translate-x-1/2 text-white/50 text-xs tracking-widest uppercase flex-col items-center gap-4 z-30 hidden xl:flex"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 1.5 }}
