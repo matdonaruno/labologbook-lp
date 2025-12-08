@@ -179,7 +179,7 @@ export const HeroSection: React.FC = () => {
         >
             {/* Primary CTA */}
             <a
-                href="https://next-crm-coral.vercel.app/"
+                href='https://next-crm-coral.vercel.app/?from=lp'
                 target="_blank"
                 rel="noopener noreferrer"
                 className="group relative px-6 sm:px-8 py-3 sm:py-4 bg-white text-black font-bold rounded-full overflow-hidden flex items-center gap-2 sm:gap-3 hover:scale-105 transition-all duration-300 text-sm sm:text-base w-full sm:w-auto justify-center"

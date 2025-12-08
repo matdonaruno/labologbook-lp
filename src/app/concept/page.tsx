@@ -784,7 +784,7 @@ const UseCaseStory = () => {
             この未来を、今すぐ体験しませんか？
           </p>
           <a
-            href="https://next-crm-coral.vercel.app/"
+            href='https://next-crm-coral.vercel.app/?from=lp'
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center gap-3 bg-white text-black px-10 py-4 rounded-full font-bold text-lg hover:scale-105 transition-all duration-300"

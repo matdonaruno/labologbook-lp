@@ -20,7 +20,7 @@ export const Footer: React.FC = () => {
                     </p>
                     <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center">
                         <a
-                            href="https://next-crm-coral.vercel.app/"
+                            href='https://next-crm-coral.vercel.app/?from=lp'
                             target="_blank"
                             rel="noopener noreferrer"
                             className="bg-white text-black px-6 sm:px-10 py-3 sm:py-4 rounded-full font-bold text-base sm:text-lg hover:scale-105 transition-all duration-300 inline-flex items-center justify-center gap-2 relative z-10"
